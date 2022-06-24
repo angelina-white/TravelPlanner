@@ -129,6 +129,7 @@ function Budget()
                             </tr>
                         </tbody>
                     </Table>
+                    <button>Save</button>
                 </form>
             </div>
             <BudgetChart travelBudget={ travelBudget }/>
