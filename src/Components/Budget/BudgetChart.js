@@ -17,13 +17,6 @@ function BudgetChart({ travelBudget })
 
     const COLORS = ['#ff0000', '#FFA500', '#FFFF00', '#00FF00', "#ADD8E6", "#0000FF", "#6a0dad"];
 
-    const RADIAN = Math.PI / 180;
-
-    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN); }
-
     return (
         <div className="">
             <PieChart width={400} height={400}>
@@ -33,8 +26,7 @@ function BudgetChart({ travelBudget })
                     isAnimationActive={false}
                     cx="200"
                     cy="200"
-                    labelLine={false}
-                    label={renderCustomizedLabel}
+                    label
                     outerRadius={80}
                     fill="#8884d8"
                 >

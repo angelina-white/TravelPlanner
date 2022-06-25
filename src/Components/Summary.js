@@ -27,6 +27,7 @@ function Summary()
                     <Accordion.Header>Hotel</Accordion.Header>
                     <Accordion.Body>
                         <h5>Hotel Name</h5>
+                        <p>Address</p>
                         <p>Check-In Day:</p>
                         <p>Check-In Time:</p>
                         <p>Check-Out Day:</p>
@@ -58,7 +59,7 @@ function Summary()
                         <p>Reservation Day:</p>
                         <p>Reservation Time:</p>
                         <h5>Cost</h5>
-                        <p>Foods cost:</p>
+                        <p>Foods cost:</p> 
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="4">

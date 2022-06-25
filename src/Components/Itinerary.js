@@ -6,6 +6,7 @@ import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import { useState } from "react"
 import DateTimePicker from 'react-datetime-picker';
+import Modal from 'react-bootstrap/Modal';
 
 function Itinerary()
 {
@@ -83,7 +84,6 @@ function Itinerary()
             style.backgroundColor = "#6a0dad"
         }
 
-
         return {
             style: style
         }
@@ -93,11 +93,6 @@ function Itinerary()
     const [allEvents, setAllEvents] = useState(events)
 
     //add flight
-    const [isFlight, setIsFlight] = useState(false)
-    function handleAddFlight()
-    {
-        setIsFlight((isFlight) => isFlight = !isFlight)
-    }
     const [newFlight, setNewFlight] = useState({ title: "", start: "", end: "", isFlight: true})
     function handleSubmitFlight()
     {
@@ -105,11 +100,6 @@ function Itinerary()
     }
 
     //add hotel
-    const [isHotel, setIsHotel] = useState(false)
-    function handleAddHotel()
-    {
-        setIsHotel((isHotel) => isHotel = !isHotel)
-    }
     const [newHotel, setNewHotel] = useState({ title: "", start: "", end: "", isHotel: true})
     function handleSubmitHotel()
     {
@@ -117,11 +107,6 @@ function Itinerary()
     }
 
     //add transpo
-    const [isTranspo, setIsTranspo] = useState(false)
-    function handleAddTranspo()
-    {
-        setIsTranspo((isTranspo) => isTranspo = !isTranspo)
-    }
     const [newTranspo, setNewTranspo] = useState({ title: "", start: "", end: "", isTranspo: true})
     function handleSubmitTranspo()
     {
@@ -129,11 +114,6 @@ function Itinerary()
     }
 
     //add food
-    const [isFood, setIsFood] = useState(false)
-    function handleAddFood()
-    {
-        setIsFood((isFood) => isFood = !isFood)
-    }
     const [newFood, setNewFood] = useState({ title: "", start: "", end: "", isFood: true})
     function handleSubmitFood()
     {
@@ -141,11 +121,6 @@ function Itinerary()
     }
 
     //add activity
-    const [isActivity, setIsActivity] = useState(false)
-    function handleAddActivity()
-    {
-        setIsActivity((isActivity) => isActivity = !isActivity)
-    }
     const [newActivity, setNewActivity] = useState({ title: "", start: "", end: "", isActivity: true})
     function handleSubmitActivity()
     {
@@ -153,11 +128,6 @@ function Itinerary()
     }
 
     //add shopping
-    const [isShopping, setIsShopping] = useState(false)
-    function handleAddShopping()
-    {
-        setIsShopping((isShopping) => isShopping = !isShopping)
-    }
     const [newShopping, setNewShopping] = useState({ title: "", start: "", end: "", isShopping: true})
     function handleSubmitShopping()
     {
@@ -165,106 +135,162 @@ function Itinerary()
     }
 
     //add misc
-    const [isMisc, setIsMisc] = useState(false)
-    function handleAddMisc()
-    {
-        setIsMisc((isMisc) => isMisc = !isMisc)
-    }
     const [newMisc, setNewMisc] = useState({ title: "", start: "", end: "", isMisc: true})
     function handleSubmitMisc()
     {
         setAllEvents([...allEvents, newMisc])
     }
 
-    console.log(newFlight)
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
     return (
         <div>
             <h1>Itinerary</h1>
-            <button onClick={ handleAddFlight }>Add Flight</button>
-            { isFlight ? 
-                <div>
+
+            <button variant="primary" onClick={handleShow}>
+                Add Flight
+            </button>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Flight</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <input type="text" placeholder="Add Title" value={newFlight.title} onChange={(e) => setNewFlight({...newFlight, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newFlight.start} selected={newFlight.start} onChange={(e) =>    setNewFlight({...newFlight, start: e})} />
                     <DateTimePicker disableClock placeholderText="End Date" value={newFlight.end} selected={newFlight.end} onChange={(e) => setNewFlight({...newFlight, end: e})} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button variant="secondary" onClick={handleClose}>
+                        Close
+                    </button>
                     <button onClick={ handleSubmitFlight }>Submit</button>
-                </div>
-                :
-                <div></div>
-            }
+                </Modal.Footer>
+            </Modal>
 
-            <button onClick={ handleAddHotel }>Add Hotel</button>
-            { isHotel ? 
-                <div>
+            <button variant="primary" onClick={handleShow}>
+                Add Hotel
+            </button>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Hotel</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <input type="text" placeholder="Add Title" value={newHotel.title} onChange={(e) => setNewHotel({...newHotel, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newHotel.start} selected={newHotel.start} onChange={(e) => setNewHotel({...newHotel, start: e})} />
                     <DateTimePicker disableClock placeholderText="End Date" value={newHotel.end} selected={newHotel.end} onChange={(e) => setNewHotel({...newHotel, end: e})} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button variant="secondary" onClick={handleClose}>
+                        Close
+                    </button>
                     <button onClick={ handleSubmitHotel }>Submit</button>
-                </div>
-                :
-                <div></div>
-            }
+                </Modal.Footer>
+            </Modal>
 
-            <button onClick={ handleAddTranspo }>Add Transportation</button>
-            { isTranspo ? 
-                <div>
-                    <input type="text" placeholder="Add Title" value={newTranspo.title} onChange={(e) => setNewTranspo({...newTranspo, title: e.target.value})} />
+            <button variant="primary" onClick={handleShow}>
+                Add Transportation
+            </button>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Transportation</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                <input type="text" placeholder="Add Title" value={newTranspo.title} onChange={(e) => setNewTranspo({...newTranspo, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newTranspo.start} selected={newTranspo.start} onChange={(e) => setNewTranspo({...newTranspo, start: e})} />
                     <DateTimePicker disableClock  placeholderText="End Date" value={newTranspo.end} selected={newTranspo.end} onChange={(e) => setNewTranspo({...newTranspo, end: e})} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button variant="secondary" onClick={handleClose}>
+                        Close
+                    </button>
                     <button onClick={ handleSubmitTranspo }>Submit</button>
-                </div>
-                :
-                <div></div>
-            }
+                </Modal.Footer>
+            </Modal>
 
-            <button onClick={ handleAddFood }>Add Restaurant</button>
-            { isFood ? 
-                <div>
+            <button variant="primary" onClick={handleShow}>
+                Add Restaurant
+            </button>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Restaurant</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <input type="text" placeholder="Add Title" value={newFood.title} onChange={(e) => setNewFood({...newFood, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newFood.start} selected={newFood.start} onChange={(e) => setNewFood({...newFood, start: e})} />
                     <DateTimePicker disableClock placeholderText="End Date" value={newFood.end} selected={newFood.end} onChange={(e) => setNewFood({...newFood, end: e})} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button variant="secondary" onClick={handleClose}>
+                        Close
+                    </button>
                     <button onClick={ handleSubmitFood }>Submit</button>
-                </div>
-                :
-                <div></div>
-            }
+                </Modal.Footer>
+            </Modal>
 
-            <button onClick={ handleAddActivity }>Add Activity</button>
-            { isActivity ? 
-                <div>
-                    <input type="text" placeholder="Add Title" value={newActivity.title} onChange={(e) => setNewActivity({...newActivity, title: e.target.value})} />
+            <button variant="primary" onClick={handleShow}>
+                Add Activity
+            </button>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Activity</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                <input type="text" placeholder="Add Title" value={newActivity.title} onChange={(e) => setNewActivity({...newActivity, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newActivity.start} selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
                     <DateTimePicker disableClock placeholderText="End Date" value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button variant="secondary" onClick={handleClose}>
+                        Close
+                    </button>
                     <button onClick={ handleSubmitActivity }>Submit</button>
-                </div>
-                :
-                <div></div>
-            }    
+                </Modal.Footer>
+            </Modal>
 
-            <button onClick={ handleAddShopping }>Add Shopping</button>
-            { isShopping ? 
-                <div>
+            <button variant="primary" onClick={handleShow}>
+                Add Shopping
+            </button>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Shopping</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <input type="text" placeholder="Add Title" value={newShopping.title} onChange={(e) => setNewShopping({...newShopping, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newShopping.start} selected={newShopping.start} onChange={(e) => setNewShopping({...newShopping, start: e})} />
                     <DateTimePicker disableClock placeholderText="End Date" value={newShopping.end} selected={newShopping.end} onChange={(e) => setNewShopping({...newShopping, end: e})} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button variant="secondary" onClick={handleClose}>
+                        Close
+                    </button>
                     <button onClick={ handleSubmitShopping }>Submit</button>
-                </div>
-                :
-                <div></div>
-            }       
+                </Modal.Footer>
+            </Modal>
 
-            <button onClick={ handleAddMisc }>Add Misc</button>
-            { isMisc ? 
-                <div>
+            <button variant="primary" onClick={handleShow}>
+                Add Misc
+            </button>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Misc</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <input type="text" placeholder="Add Title" value={newMisc.title} onChange={(e) => setNewMisc({...newMisc, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newMisc.start} selected={newMisc.start} onChange={(e) => setNewMisc({...newMisc, start: e})} />
                     <DateTimePicker disableClock placeholderText="End Date" value={newMisc.end} selected={newMisc.end} onChange={(e) => setNewMisc({...newMisc, end: e})} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button variant="secondary" onClick={handleClose}>
+                        Close
+                    </button>
                     <button onClick={ handleSubmitMisc }>Submit</button>
-                </div>
-                :
-                <div></div>
-            }    
+                </Modal.Footer>
+            </Modal>
 
             <Calendar
                 localizer={localizer}
