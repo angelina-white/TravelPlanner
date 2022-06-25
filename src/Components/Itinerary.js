@@ -7,6 +7,7 @@ import enUS from 'date-fns/locale/en-US'
 import { useState } from "react"
 import DateTimePicker from 'react-datetime-picker';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 
 function Itinerary()
 {
@@ -142,60 +143,152 @@ function Itinerary()
     }
 
 
-    const [show, setShow] = useState(false);
+    const [showFlight, setShowFlight] = useState(false);
+    const handleCloseFlight = () => setShowFlight(false);
+    const handleShowFlight = () => setShowFlight(true);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showHotel, setShowHotel] = useState(false);
+    const handleCloseHotel = () => setShowHotel(false);
+    const handleShowHotel = () => setShowHotel(true);
 
+    const [showTranspo, setShowTranspo] = useState(false);
+    const handleCloseTranspo = () => setShowTranspo(false);
+    const handleShowTranspo = () => setShowTranspo(true);
+
+    const [showFood, setShowFood] = useState(false);
+    const handleCloseFood = () => setShowFood(false);
+    const handleShowFood = () => setShowFood(true);
+
+    const [showActivity, setShowActivity] = useState(false);
+    const handleCloseActivity = () => setShowActivity(false);
+    const handleShowActivity = () => setShowActivity(true);
+
+    const [showShopping, setShowShopping] = useState(false);
+    const handleCloseShopping = () => setShowShopping(false);
+    const handleShowShopping = () => setShowShopping(true);
+
+    const [showMisc, setShowMisc] = useState(false);
+    const handleCloseMisc = () => setShowMisc(false);
+    const handleShowMisc = () => setShowMisc(true);
 
     return (
         <div>
             <h1>Itinerary</h1>
 
-            <button variant="primary" onClick={handleShow}>
+            <button variant="primary" onClick={handleShowFlight}>
                 Add Flight
             </button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal size="lg" show={showFlight} onHide={handleCloseFlight}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Flight</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
+                    <Form>
                     <input type="text" placeholder="Add Title" value={newFlight.title} onChange={(e) => setNewFlight({...newFlight, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newFlight.start} selected={newFlight.start} onChange={(e) =>    setNewFlight({...newFlight, start: e})} />
                     <DateTimePicker disableClock placeholderText="End Date" value={newFlight.end} selected={newFlight.end} onChange={(e) => setNewFlight({...newFlight, end: e})} />
+                    <h3>Details</h3>
+{/* 
+                    <Form> */}
+                        {['radio'].map((type) => (
+                            <div key={`inline-${type}`} className="mb-3">
+                            <Form.Check
+                                inline
+                                label="Departing"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-1`}
+                            />
+                            <Form.Check
+                                inline
+                                label="Arriving"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-2`}
+                            />
+                            </div>
+                        ))}
+                    {/* </Form> */}
+
+                    <label>
+                        Airline:
+                        <input type="text" name="airline" />
+                    </label>
+                    <label>
+                        Gate:
+                        <input type="number" min="0" name="gate" />
+                    </label>
+                    </Form>
+
                 </Modal.Body>
                 <Modal.Footer>
-                    <button variant="secondary" onClick={handleClose}>
+                    <button variant="secondary" onClick={handleCloseFlight}>
                         Close
                     </button>
                     <button onClick={ handleSubmitFlight }>Submit</button>
                 </Modal.Footer>
             </Modal>
 
-            <button variant="primary" onClick={handleShow}>
+            <button variant="primary" onClick={handleShowHotel}>
                 Add Hotel
             </button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal size="lg" show={showHotel} onHide={handleCloseHotel}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Hotel</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <Form>
                     <input type="text" placeholder="Add Title" value={newHotel.title} onChange={(e) => setNewHotel({...newHotel, title: e.target.value})} />
                     <DateTimePicker disableClock placeholderText="Start Date" value={newHotel.start} selected={newHotel.start} onChange={(e) => setNewHotel({...newHotel, start: e})} />
                     <DateTimePicker disableClock placeholderText="End Date" value={newHotel.end} selected={newHotel.end} onChange={(e) => setNewHotel({...newHotel, end: e})} />
+
+
+                    {/* <Form> */}
+                        {['radio'].map((type) => (
+                            <div key={`inline-${type}`} className="mb-3">
+                            <Form.Check
+                                inline
+                                label="Check-in"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-1`}
+                            />
+                            <Form.Check
+                                inline
+                                label="Check-out"
+                                name="group1"
+                                type={type}
+                                id={`inline-${type}-2`}
+                            />
+                            </div>
+                        ))}
+                    {/* </Form> */}
+
+
+                    <label>
+                        Hotel Name:
+                        <input type="text" name="airline" />
+                    </label>
+                    <label>
+                        Hotel Address:
+                        <input type="text" name="airline" />
+                    </label>
+                    </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button variant="secondary" onClick={handleClose}>
+                    <button variant="secondary" onClick={handleCloseHotel}>
                         Close
                     </button>
                     <button onClick={ handleSubmitHotel }>Submit</button>
                 </Modal.Footer>
             </Modal>
 
-            <button variant="primary" onClick={handleShow}>
+
+            <button variant="primary" onClick={handleShowTranspo}>
                 Add Transportation
             </button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showTranspo} onHide={handleCloseTranspo}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Transportation</Modal.Title>
                 </Modal.Header>
@@ -205,17 +298,19 @@ function Itinerary()
                     <DateTimePicker disableClock  placeholderText="End Date" value={newTranspo.end} selected={newTranspo.end} onChange={(e) => setNewTranspo({...newTranspo, end: e})} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <button variant="secondary" onClick={handleClose}>
+                    <button variant="secondary" onClick={handleCloseTranspo}>
                         Close
                     </button>
                     <button onClick={ handleSubmitTranspo }>Submit</button>
                 </Modal.Footer>
             </Modal>
 
-            <button variant="primary" onClick={handleShow}>
+
+
+            <button variant="primary" onClick={handleShowFood}>
                 Add Restaurant
             </button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showFood} onHide={handleCloseFood}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Restaurant</Modal.Title>
                 </Modal.Header>
@@ -225,17 +320,18 @@ function Itinerary()
                     <DateTimePicker disableClock placeholderText="End Date" value={newFood.end} selected={newFood.end} onChange={(e) => setNewFood({...newFood, end: e})} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <button variant="secondary" onClick={handleClose}>
+                    <button variant="secondary" onClick={handleCloseFood}>
                         Close
                     </button>
                     <button onClick={ handleSubmitFood }>Submit</button>
                 </Modal.Footer>
             </Modal>
 
-            <button variant="primary" onClick={handleShow}>
+
+            <button variant="primary" onClick={handleShowActivity}>
                 Add Activity
             </button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showActivity} onHide={handleCloseActivity}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Activity</Modal.Title>
                 </Modal.Header>
@@ -245,17 +341,18 @@ function Itinerary()
                     <DateTimePicker disableClock placeholderText="End Date" value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <button variant="secondary" onClick={handleClose}>
+                    <button variant="secondary" onClick={handleCloseActivity}>
                         Close
                     </button>
                     <button onClick={ handleSubmitActivity }>Submit</button>
                 </Modal.Footer>
             </Modal>
 
-            <button variant="primary" onClick={handleShow}>
+
+            <button variant="primary" onClick={handleShowShopping}>
                 Add Shopping
             </button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showShopping} onHide={handleCloseShopping}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Shopping</Modal.Title>
                 </Modal.Header>
@@ -265,17 +362,18 @@ function Itinerary()
                     <DateTimePicker disableClock placeholderText="End Date" value={newShopping.end} selected={newShopping.end} onChange={(e) => setNewShopping({...newShopping, end: e})} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <button variant="secondary" onClick={handleClose}>
+                    <button variant="secondary" onClick={handleCloseShopping}>
                         Close
                     </button>
                     <button onClick={ handleSubmitShopping }>Submit</button>
                 </Modal.Footer>
             </Modal>
 
-            <button variant="primary" onClick={handleShow}>
+
+            <button variant="primary" onClick={handleShowMisc}>
                 Add Misc
             </button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showMisc} onHide={handleCloseMisc}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Misc</Modal.Title>
                 </Modal.Header>
@@ -285,12 +383,12 @@ function Itinerary()
                     <DateTimePicker disableClock placeholderText="End Date" value={newMisc.end} selected={newMisc.end} onChange={(e) => setNewMisc({...newMisc, end: e})} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <button variant="secondary" onClick={handleClose}>
+                    <button variant="secondary" onClick={handleCloseMisc}>
                         Close
                     </button>
                     <button onClick={ handleSubmitMisc }>Submit</button>
                 </Modal.Footer>
-            </Modal>
+            </Modal> 
 
             <Calendar
                 localizer={localizer}
