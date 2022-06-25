@@ -7,8 +7,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import "react-datepicker/dist/react-datepicker.css";
-
+import 'react-datetime-picker/dist/DateTimePicker.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

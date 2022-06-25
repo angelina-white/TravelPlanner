@@ -5,9 +5,7 @@ import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import { useState } from "react"
-import DatePicker from "react-datepicker"
-
-
+import DateTimePicker from 'react-datetime-picker';
 
 function Itinerary()
 {
@@ -15,34 +13,34 @@ function Itinerary()
         'en-US': enUS,
       }
       
-      const localizer = dateFnsLocalizer({
-        format,
-        parse,
-        startOfWeek,
-        getDay,
-        locales,
-      })
+    const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek,
+    getDay,
+    locales,
+    })
       
-      const events = [
-          {
-              title: "Big Meeting",
-              allDay: true,
-              start: new Date(2022,6,25),
-              end: new Date(2022, 6, 25),
-              isFlight: true
-          },
-          {
-              title: "Vacation",
-              start: new Date(2022,6,27),
-              end: new Date(2022, 6, 30),
-              isTranspo: true
-          },
-          {
-              title: "Conference",
-              start: new Date(2022,6,28),
-              end: new Date(2022, 6, 28)
-          }
-      ]
+    const events = [
+        {
+            title: "Big Meeting",
+            allDay: false,
+            start: new Date(2022,5,25, 13, 30),
+            end: new Date(2022, 5, 25, 17, 30),
+            isFlight: true
+        },
+        {
+            title: "Vacation",
+            start: new Date(2022,6,27),
+            end: new Date(2022, 6, 30),
+            isTranspo: true
+        },
+        {
+            title: "Conference",
+            start: new Date(2022,6,28),
+            end: new Date(2022, 6, 28)
+        }
+    ]
 
     //color flights
     function eventStyleGetter(event, start, end, isSelected) 
@@ -178,6 +176,9 @@ function Itinerary()
         setAllEvents([...allEvents, newMisc])
     }
 
+    console.log(newFlight)
+
+
     return (
         <div>
             <h1>Itinerary</h1>
@@ -185,8 +186,8 @@ function Itinerary()
             { isFlight ? 
                 <div>
                     <input type="text" placeholder="Add Title" value={newFlight.title} onChange={(e) => setNewFlight({...newFlight, title: e.target.value})} />
-                    <DatePicker placeholderText="Start Date" selected={newFlight.start} onChange={(e) => setNewFlight({...newFlight, start: e})} />
-                    <DatePicker placeholderText="End Date" selected={newFlight.end} onChange={(e) => setNewFlight({...newFlight, end: e})} />
+                    <DateTimePicker disableClock placeholderText="Start Date" value={newFlight.start} selected={newFlight.start} onChange={(e) =>    setNewFlight({...newFlight, start: e})} />
+                    <DateTimePicker disableClock placeholderText="End Date" value={newFlight.end} selected={newFlight.end} onChange={(e) => setNewFlight({...newFlight, end: e})} />
                     <button onClick={ handleSubmitFlight }>Submit</button>
                 </div>
                 :
@@ -197,8 +198,8 @@ function Itinerary()
             { isHotel ? 
                 <div>
                     <input type="text" placeholder="Add Title" value={newHotel.title} onChange={(e) => setNewHotel({...newHotel, title: e.target.value})} />
-                    <DatePicker placeholderText="Start Date" selected={newHotel.start} onChange={(e) => setNewHotel({...newHotel, start: e})} />
-                    <DatePicker placeholderText="End Date" selected={newHotel.end} onChange={(e) => setNewHotel({...newHotel, end: e})} />
+                    <DateTimePicker disableClock placeholderText="Start Date" value={newHotel.start} selected={newHotel.start} onChange={(e) => setNewHotel({...newHotel, start: e})} />
+                    <DateTimePicker disableClock placeholderText="End Date" value={newHotel.end} selected={newHotel.end} onChange={(e) => setNewHotel({...newHotel, end: e})} />
                     <button onClick={ handleSubmitHotel }>Submit</button>
                 </div>
                 :
@@ -209,8 +210,8 @@ function Itinerary()
             { isTranspo ? 
                 <div>
                     <input type="text" placeholder="Add Title" value={newTranspo.title} onChange={(e) => setNewTranspo({...newTranspo, title: e.target.value})} />
-                    <DatePicker placeholderText="Start Date" selected={newTranspo.start} onChange={(e) => setNewTranspo({...newTranspo, start: e})} />
-                    <DatePicker placeholderText="End Date" selected={newTranspo.end} onChange={(e) => setNewTranspo({...newTranspo, end: e})} />
+                    <DateTimePicker disableClock placeholderText="Start Date" value={newTranspo.start} selected={newTranspo.start} onChange={(e) => setNewTranspo({...newTranspo, start: e})} />
+                    <DateTimePicker disableClock  placeholderText="End Date" value={newTranspo.end} selected={newTranspo.end} onChange={(e) => setNewTranspo({...newTranspo, end: e})} />
                     <button onClick={ handleSubmitTranspo }>Submit</button>
                 </div>
                 :
@@ -221,8 +222,8 @@ function Itinerary()
             { isFood ? 
                 <div>
                     <input type="text" placeholder="Add Title" value={newFood.title} onChange={(e) => setNewFood({...newFood, title: e.target.value})} />
-                    <DatePicker placeholderText="Start Date" selected={newFood.start} onChange={(e) => setNewFood({...newFood, start: e})} />
-                    <DatePicker placeholderText="End Date" selected={newFood.end} onChange={(e) => setNewFood({...newFood, end: e})} />
+                    <DateTimePicker disableClock placeholderText="Start Date" value={newFood.start} selected={newFood.start} onChange={(e) => setNewFood({...newFood, start: e})} />
+                    <DateTimePicker disableClock placeholderText="End Date" value={newFood.end} selected={newFood.end} onChange={(e) => setNewFood({...newFood, end: e})} />
                     <button onClick={ handleSubmitFood }>Submit</button>
                 </div>
                 :
@@ -233,8 +234,8 @@ function Itinerary()
             { isActivity ? 
                 <div>
                     <input type="text" placeholder="Add Title" value={newActivity.title} onChange={(e) => setNewActivity({...newActivity, title: e.target.value})} />
-                    <DatePicker placeholderText="Start Date" selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
-                    <DatePicker placeholderText="End Date" selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
+                    <DateTimePicker disableClock placeholderText="Start Date" value={newActivity.start} selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
+                    <DateTimePicker disableClock placeholderText="End Date" value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
                     <button onClick={ handleSubmitActivity }>Submit</button>
                 </div>
                 :
@@ -245,8 +246,8 @@ function Itinerary()
             { isShopping ? 
                 <div>
                     <input type="text" placeholder="Add Title" value={newShopping.title} onChange={(e) => setNewShopping({...newShopping, title: e.target.value})} />
-                    <DatePicker placeholderText="Start Date" selected={newShopping.start} onChange={(e) => setNewShopping({...newShopping, start: e})} />
-                    <DatePicker placeholderText="End Date" selected={newShopping.end} onChange={(e) => setNewShopping({...newShopping, end: e})} />
+                    <DateTimePicker disableClock placeholderText="Start Date" value={newShopping.start} selected={newShopping.start} onChange={(e) => setNewShopping({...newShopping, start: e})} />
+                    <DateTimePicker disableClock placeholderText="End Date" value={newShopping.end} selected={newShopping.end} onChange={(e) => setNewShopping({...newShopping, end: e})} />
                     <button onClick={ handleSubmitShopping }>Submit</button>
                 </div>
                 :
@@ -257,8 +258,8 @@ function Itinerary()
             { isMisc ? 
                 <div>
                     <input type="text" placeholder="Add Title" value={newMisc.title} onChange={(e) => setNewMisc({...newMisc, title: e.target.value})} />
-                    <DatePicker placeholderText="Start Date" selected={newMisc.start} onChange={(e) => setNewMisc({...newMisc, start: e})} />
-                    <DatePicker placeholderText="End Date" selected={newMisc.end} onChange={(e) => setNewMisc({...newMisc, end: e})} />
+                    <DateTimePicker disableClock placeholderText="Start Date" value={newMisc.start} selected={newMisc.start} onChange={(e) => setNewMisc({...newMisc, start: e})} />
+                    <DateTimePicker disableClock placeholderText="End Date" value={newMisc.end} selected={newMisc.end} onChange={(e) => setNewMisc({...newMisc, end: e})} />
                     <button onClick={ handleSubmitMisc }>Submit</button>
                 </div>
                 :
