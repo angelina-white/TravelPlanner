@@ -12,13 +12,10 @@ function BudgetChart({ travelBudget })
     { name: 'Food', value: parseInt(food) },
     { name: 'Activities', value: parseInt(activities) },
     { name: 'Shopping', value: parseInt(shopping) },
-    { name: 'Phone', value: parseInt(phone)},
     { name: 'Misc', value: parseInt(misc) }
     ];
 
-    console.log(data)
-
-    const COLORS = ['#ff0000', '#FFA500', '#FFFF00', '#00FF00', "#ADD8E6", "#0000FF", "#E6E6FA", "#6a0dad"];
+    const COLORS = ['#ff0000', '#FFA500', '#FFFF00', '#00FF00', "#ADD8E6", "#0000FF", "#6a0dad"];
 
     const RADIAN = Math.PI / 180;
 
@@ -71,10 +68,6 @@ function BudgetChart({ travelBudget })
                 </ListGroup.Item>
                 <ListGroup.Item>
                     <div className="budgetChartBox" id="shoppingBox"></div>
-                    Shopping
-                </ListGroup.Item>
-                <ListGroup.Item>
-                    <div className="budgetChartBox" id="phoneBox"></div>
                     Shopping
                 </ListGroup.Item>
                 <ListGroup.Item>

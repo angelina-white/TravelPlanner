@@ -13,7 +13,6 @@ function Budget()
             food: "0",
             activities: "0",
             shopping: "0",
-            phone: "0",
             misc: "0"
         }
     )
@@ -24,6 +23,8 @@ function Budget()
             ...travelBudget, [event.target.name]: event.target.value
         })
     }
+
+    const budgetTotal = (parseFloat(travelBudget.flight) + parseFloat(travelBudget.hotel) + parseFloat(travelBudget.transportation) + parseFloat(travelBudget.food) + parseFloat(travelBudget.activities) + parseFloat(travelBudget.shopping) + parseFloat(travelBudget.misc)).toFixed(2)
 
     return (
         <div className="budget">
@@ -116,19 +117,6 @@ function Budget()
                                 </td>
                             </tr>
                             <tr>
-                                <td>Phone</td>
-                                <td>
-                                    <CurrencyInput
-                                        id="input-example"
-                                        name="phone"
-                                        placeholder="Please enter a number"
-                                        defaultValue= "0.00"
-                                        decimalsLimit={2}
-                                        onChange={ handleChange }
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>Misc</td>
                                 <td>
                                     <CurrencyInput
@@ -139,6 +127,12 @@ function Budget()
                                         decimalsLimit={2}
                                         onChange={ handleChange }
                                     />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>
+                                    ${ budgetTotal }
                                 </td>
                             </tr>
                         </tbody>
