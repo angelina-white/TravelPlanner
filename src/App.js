@@ -3,6 +3,7 @@ import Home from "./Components/Home"
 import Itinerary from "./Components/Itinerary"
 import Map from "./Components/Map"
 import Budget from "./Components/Budget/Budget"
+import Summary from "./Components/Summary"
 import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
               <li><Link to='itinerary'>Itinerary</Link></li>
               <li><Link to='map'>Map</Link></li>
               <li><Link to='budget'>Budget</Link></li>
+              <li><Link to='summary'>Summary</Link></li>
             </ul>
           </nav>
           <Routes>
@@ -23,6 +25,7 @@ function App() {
             <Route path='/itinerary' element={ <Itinerary />} />
             <Route path='/map' element={ <Map />} />
             <Route path='/budget' element={ <Budget />} />
+            <Route path='/summary' element={ <Summary />} />
           </Routes>
         </Router>
 

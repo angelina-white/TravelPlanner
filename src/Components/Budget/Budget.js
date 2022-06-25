@@ -13,6 +13,7 @@ function Budget()
             food: "0",
             activities: "0",
             shopping: "0",
+            phone: "0",
             misc: "0"
         }
     )
@@ -107,6 +108,19 @@ function Budget()
                                     <CurrencyInput
                                         id="input-example"
                                         name="shopping"
+                                        placeholder="Please enter a number"
+                                        defaultValue= "0.00"
+                                        decimalsLimit={2}
+                                        onChange={ handleChange }
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>
+                                    <CurrencyInput
+                                        id="input-example"
+                                        name="phone"
                                         placeholder="Please enter a number"
                                         defaultValue= "0.00"
                                         decimalsLimit={2}
