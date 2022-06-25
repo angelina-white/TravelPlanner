@@ -6,13 +6,13 @@ function BudgetChart({ travelBudget })
     const {flight, hotel, transportation, food, activities, shopping, misc} = travelBudget
 
     const data = [
-    { name: 'flight', value: parseInt(flight) },
-    { name: 'hotel', value: parseInt(hotel) },
-    { name: 'transportation', value: parseInt(transportation) },
-    { name: 'food', value: parseInt(food) },
-    { name: 'activities', value: parseInt(activities) },
-    { name: 'shopping', value: parseInt(shopping) },
-    { name: 'misc', value: parseInt(misc) }
+    { name: 'Flight', value: parseInt(flight) },
+    { name: 'Hotel', value: parseInt(hotel) },
+    { name: 'Transportation', value: parseInt(transportation) },
+    { name: 'Food', value: parseInt(food) },
+    { name: 'Activities', value: parseInt(activities) },
+    { name: 'Shopping', value: parseInt(shopping) },
+    { name: 'Misc', value: parseInt(misc) }
     ];
 
     console.log(data)

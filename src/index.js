@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
