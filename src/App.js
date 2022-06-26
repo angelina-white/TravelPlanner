@@ -1,6 +1,7 @@
 import './App.css';
 import Home from "./Components/Home"
 import Itinerary from "./Components/Itinerary"
+import PlanningHelper from "./Components/PlanningHelper"
 import Map from "./Components/Map"
 import Budget from "./Components/Budget/Budget"
 import Summary from "./Components/Summary"
@@ -15,6 +16,7 @@ function App() {
             <ul className="linkClass">
               <li><Link to='/'>Home</Link></li>
               <li><Link to='itinerary'>Itinerary</Link></li>
+              <li><Link to='planning-helper'>Planning Helper</Link></li>
               <li><Link to='map'>Map</Link></li>
               <li><Link to='budget'>Budget</Link></li>
               <li><Link to='summary'>Summary</Link></li>
@@ -23,6 +25,7 @@ function App() {
           <Routes>
             <Route path='/' element={ <Home />} />
             <Route path='/itinerary' element={ <Itinerary />} />
+            <Route path='/planning-helper' element={ <PlanningHelper />} />
             <Route path='/map' element={ <Map />} />
             <Route path='/budget' element={ <Budget />} />
             <Route path='/summary' element={ <Summary />} />
