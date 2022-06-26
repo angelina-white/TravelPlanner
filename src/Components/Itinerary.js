@@ -332,8 +332,8 @@ function Itinerary()
                     </Modal.Header>
                     <Modal.Body>
                             <input type="text" placeholder="Add Title" value={newFlight.title} onChange={(e) => setNewFlight({...newFlight, title: e.target.value})} />
-                            <DateTimePicker disableClock placeholderText="Start Date" value={newFlight.start} selected={newFlight.start} onChange={(e) =>    setNewFlight({...newFlight, start: e})} />
-                            <DateTimePicker disableClock placeholderText="End Date" value={newFlight.end} selected={newFlight.end} onChange={(e) => setNewFlight({...newFlight, end: e})} />
+                            <DateTimePicker disableClock value={newFlight.start} selected={newFlight.start} onChange={(e) =>    setNewFlight({...newFlight, start: e})} />
+                            <DateTimePicker disableClock value={newFlight.end} selected={newFlight.end} onChange={(e) => setNewFlight({...newFlight, end: e})} />
 
                             <h3>Details</h3>
                             <Form.Check
@@ -441,8 +441,8 @@ function Itinerary()
                     </Modal.Header>
                     <Modal.Body>
                         <input type="text" placeholder="Add Title" value={newHotel.title} onChange={(e) => setNewHotel({...newHotel, title: e.target.value})} />
-                        <DateTimePicker disableClock placeholderText="Start Date" value={newHotel.start} selected={newHotel.start} onChange={(e) => setNewHotel({...newHotel, start: e})} />
-                        <DateTimePicker disableClock placeholderText="End Date" value={newHotel.end} selected={newHotel.end} onChange={(e) => setNewHotel({...newHotel, end: e})} />
+                        <DateTimePicker disableClock value={newHotel.start} selected={newHotel.start} onChange={(e) => setNewHotel({...newHotel, start: e})} />
+                        <DateTimePicker disableClock value={newHotel.end} selected={newHotel.end} onChange={(e) => setNewHotel({...newHotel, end: e})} />
 
                         <Form.Check
                             label="Check-in"
@@ -557,8 +557,8 @@ function Itinerary()
                     </Modal.Header>
                     <Modal.Body>
                         <input type="text" placeholder="Add Title" value={newTranspo.title} onChange={(e) => setNewTranspo({...newTranspo, title: e.target.value})} />
-                        <DateTimePicker disableClock placeholderText="Start Date" value={newTranspo.start} selected={newTranspo.start} onChange={(e) => setNewTranspo({...newTranspo, start: e})} />
-                        <DateTimePicker disableClock  placeholderText="End Date" value={newTranspo.end} selected={newTranspo.end} onChange={(e) => setNewTranspo({...newTranspo, end: e})} />
+                        <DateTimePicker disableClock value={newTranspo.start} selected={newTranspo.start} onChange={(e) => setNewTranspo({...newTranspo, start: e})} />
+                        <DateTimePicker disableClock value={newTranspo.end} selected={newTranspo.end} onChange={(e) => setNewTranspo({...newTranspo, end: e})} />
 
                         <Form.Check
                             label="Airport Pick-up"
@@ -620,8 +620,8 @@ function Itinerary()
                     </Modal.Header>
                     <Modal.Body>
                         <input type="text" placeholder="Add Title" value={newFood.title} onChange={(e) => setNewFood({...newFood, title: e.target.value})} />
-                        <DateTimePicker disableClock placeholderText="Start Date" value={newFood.start} selected={newFood.start} onChange={(e) => setNewFood({...newFood, start: e})} />
-                        <DateTimePicker disableClock placeholderText="End Date" value={newFood.end} selected={newFood.end} onChange={(e) => setNewFood({...newFood, end: e})} />
+                        <DateTimePicker disableClock value={newFood.start} selected={newFood.start} onChange={(e) => setNewFood({...newFood, start: e})} />
+                        <DateTimePicker disableClock value={newFood.end} selected={newFood.end} onChange={(e) => setNewFood({...newFood, end: e})} />
 
                         <label>
                             Restaurant Name:
@@ -716,8 +716,8 @@ function Itinerary()
                     </Modal.Header>
                     <Modal.Body>
                     <input type="text" placeholder="Add Title" value={newActivity.title} onChange={(e) => setNewActivity({...newActivity, title: e.target.value})} />
-                        <DateTimePicker disableClock placeholderText="Start Date" value={newActivity.start} selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
-                        <DateTimePicker disableClock placeholderText="End Date" value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
+                        <DateTimePicker disableClock value={newActivity.start} selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
+                        <DateTimePicker disableClock value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
 
                         <label>
                             Location:
@@ -808,8 +808,8 @@ function Itinerary()
                     </Modal.Header>
                     <Modal.Body>
                         <input type="text" placeholder="Add Title" value={newShopping.title} onChange={(e) => setNewShopping({...newShopping, title: e.target.value})} />
-                        <DateTimePicker disableClock placeholderText="Start Date" value={newShopping.start} selected={newShopping.start} onChange={(e) => setNewShopping({...newShopping, start: e})} />
-                        <DateTimePicker disableClock placeholderText="End Date" value={newShopping.end} selected={newShopping.end} onChange={(e) => setNewShopping({...newShopping, end: e})} />
+                        <DateTimePicker disableClock value={newShopping.start} selected={newShopping.start} onChange={(e) => setNewShopping({...newShopping, start: e})} />
+                        <DateTimePicker disableClock value={newShopping.end} selected={newShopping.end} onChange={(e) => setNewShopping({...newShopping, end: e})} />
 
                         <label>
                             Location:
@@ -899,8 +899,8 @@ function Itinerary()
                     </Modal.Header>
                     <Modal.Body>
                         <input type="text" placeholder="Add Title" value={newMisc.title} onChange={(e) => setNewMisc({...newMisc, title: e.target.value})} />
-                        <DateTimePicker disableClock placeholderText="Start Date" value={newMisc.start} selected={newMisc.start} onChange={(e) => setNewMisc({...newMisc, start: e})} />
-                        <DateTimePicker disableClock placeholderText="End Date" value={newMisc.end} selected={newMisc.end} onChange={(e) => setNewMisc({...newMisc, end: e})} />
+                        <DateTimePicker disableClock value={newMisc.start} selected={newMisc.start} onChange={(e) => setNewMisc({...newMisc, start: e})} />
+                        <DateTimePicker disableClock value={newMisc.end} selected={newMisc.end} onChange={(e) => setNewMisc({...newMisc, end: e})} />
 
                         <label>
                             Misc:

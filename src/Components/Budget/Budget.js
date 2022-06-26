@@ -30,7 +30,7 @@ function Budget()
         <div className="budget">
             <h1>Budget</h1>
             <div className="budgetInput">
-                <h2>Budget Input</h2>
+                <h3>Planning how much you'll spend</h3>
                 <form>
                     <Table className="orderInputTable" striped bordered hover size="sm">
                         <thead>

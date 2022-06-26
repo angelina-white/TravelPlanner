@@ -3,7 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 function BudgetChart({ travelBudget })
 {
-    const {flight, hotel, transportation, food, activities, shopping, phone, misc} = travelBudget
+    const {flight, hotel, transportation, food, activities, shopping, misc} = travelBudget
 
     const data = [
     { name: 'Flight', value: parseInt(flight) },
