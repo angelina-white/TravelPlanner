@@ -143,6 +143,7 @@ function Itinerary()
     }
 
 
+    //show category form
     const [showFlight, setShowFlight] = useState(false);
     const handleCloseFlight = () => setShowFlight(false);
     const handleShowFlight = () => setShowFlight(true);
@@ -171,6 +172,152 @@ function Itinerary()
     const handleCloseMisc = () => setShowMisc(false);
     const handleShowMisc = () => setShowMisc(true);
 
+
+    //hotel check in
+    const [isHotelCheckOut, setHotelCheckOut] = useState(false)
+    function handleHotelCheckOut()
+    {
+        setHotelCheckOut((isHotelCheckOut) => isHotelCheckOut = false)
+    }
+
+    function handleHotelCheckIn()
+    {
+        setHotelCheckOut((isHotelCheckOut) => isHotelCheckOut = true)
+    }
+
+
+    //add costs
+    const [isAddFlightCost, setIsAddFlightCost] = useState(false)
+    function handleAddFlightCost()
+    {
+        setIsAddFlightCost((isAddFlightCost) => isAddFlightCost = true)
+    }
+    function handleNoAddFlightCost()
+    {
+        setIsAddFlightCost((isAddFlightCost) => isAddFlightCost = false)
+    }
+
+    const [isAddHotelCost, setIsAddHotelCost] = useState(false)
+    function handleAddHotelCost()
+    {
+        setIsAddHotelCost((isAddHotelCost) => isAddHotelCost = true)
+    }
+    function handleNoAddHotelCost()
+    {
+        setIsAddHotelCost((isAddHotelCost) => isAddHotelCost = false)
+    }
+
+    const [isAddTranspoCost, setIsAddTranspoCost] = useState(false)
+    function handleAddTranspoCost()
+    {
+        setIsAddTranspoCost((isAddTranspoCost) => isAddTranspoCost = true)
+    }
+    function handleNoAddTranspoCost()
+    {
+        setIsAddTranspoCost((isAddTranspoCost) => isAddTranspoCost = false)
+    }
+
+    const [isAddRestaCost, setIsAddRestaCost] = useState(false)
+    function handleAddRestaCost()
+    {
+        setIsAddRestaCost((isAddRestaCost) => isAddRestaCost = true)
+    }
+    function handleNoAddRestaCost()
+    {
+        setIsAddRestaCost((isAddRestaCost) => isAddRestaCost = false)
+    }
+
+    const [isAddActivityCost, setIsAddActivityCost] = useState(false)
+    function handleAddActivityCost()
+    {
+        setIsAddActivityCost((isAddActivityCost) => isAddActivityCost = true)
+    }
+    function handleNoAddActivityCost()
+    {
+        setIsAddActivityCost((isAddActivityCost) => isAddActivityCost = false)
+    }
+
+    const [isAddShoppingCost, setIsAddShoppingCost] = useState(false)
+    function handleAddShoppingCost()
+    {
+        setIsAddShoppingCost((isAddShoppingCost) => isAddShoppingCost = true)
+    }
+    function handleNoAddShoppingCost()
+    {
+        setIsAddShoppingCost((isAddShoppingCost) => isAddShoppingCost = false)
+    }
+
+    const [isAddMiscCost, setIsAddMiscCost] = useState(false)
+    function handleAddMiscCost()
+    {
+        setIsAddMiscCost((isAddMiscCost) => isAddMiscCost = true)
+    }
+    function handleNoAddMiscCost()
+    {
+        setIsAddMiscCost((isAddMiscCost) => isAddMiscCost = false)
+    }
+
+    //add location to map
+    const [isAddFlightLocation, setIsAddFlightLocation] = useState(false)
+    function handleAddFlightLocation()
+    {
+        setIsAddFlightLocation((isAddFlightLocation) => isAddFlightLocation = true)
+    }
+    function handleNoAddFlightLocation()
+    {
+        setIsAddFlightLocation((isAddFlightLocation) => isAddFlightLocation = false)
+    }
+
+    const [isAddHotelLocation, setIsAddHotelLocation] = useState(false)
+    function handleAddHotelLocation()
+    {
+        setIsAddHotelLocation((isAddHotelLocation) => isAddHotelLocation = true)
+    }
+    function handleNoAddHotelLocation()
+    {
+        setIsAddHotelLocation((isAddHotelLocation) => isAddHotelLocation = false)
+    }
+
+    const [isAddRestaLocation, setIsAddRestaLocation] = useState(false)
+    function handleAddRestaLocation()
+    {
+        setIsAddRestaLocation((isAddRestaLocation) => isAddRestaLocation = true)
+    }
+    function handleNoAddRestaLocation()
+    {
+        setIsAddRestaLocation((isAddRestaLocation) => isAddRestaLocation = false)
+    }
+
+    const [isAddActivityLocation, setIsAddActivityLocation] = useState(false)
+    function handleAddActivityLocation()
+    {
+        setIsAddActivityLocation((isAddActivityLocation) => isAddActivityLocation = true)
+    }
+    function handleNoAddActivityLocation()
+    {
+        setIsAddActivityLocation((isAddActivityLocation) => isAddActivityLocation = false)
+    }
+
+    const [isAddShoppingLocation, setIsAddShoppingLocation] = useState(false)
+    function handleAddShoppingLocation()
+    {
+        setIsAddShoppingLocation((isAddShoppingLocation) => isAddShoppingLocation = true)
+    }
+    function handleNoAddShoppingLocation()
+    {
+        setIsAddShoppingLocation((isAddShoppingLocation) => isAddShoppingLocation = false)
+    }
+
+    const [isAddMiscLocation, setIsAddMiscLocation] = useState(false)
+    function handleAddMiscLocation()
+    {
+        setIsAddMiscLocation((isAddMiscLocation) => isAddMiscLocation = true)
+    }
+    function handleNoAddMiscLocation()
+    {
+        setIsAddMiscLocation((isAddMiscLocation) => isAddMiscLocation = false)
+    }
+
     return (
         <div>
             <h1>Itinerary</h1>
@@ -178,110 +325,225 @@ function Itinerary()
             <button variant="primary" onClick={handleShowFlight}>
                 Add Flight
             </button>
-            <Modal size="lg" show={showFlight} onHide={handleCloseFlight}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Flight</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+            <Modal show={showFlight} onHide={handleCloseFlight}>
+                <Form>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Flight</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                            <input type="text" placeholder="Add Title" value={newFlight.title} onChange={(e) => setNewFlight({...newFlight, title: e.target.value})} />
+                            <DateTimePicker disableClock placeholderText="Start Date" value={newFlight.start} selected={newFlight.start} onChange={(e) =>    setNewFlight({...newFlight, start: e})} />
+                            <DateTimePicker disableClock placeholderText="End Date" value={newFlight.end} selected={newFlight.end} onChange={(e) => setNewFlight({...newFlight, end: e})} />
 
-                    <Form>
-                    <input type="text" placeholder="Add Title" value={newFlight.title} onChange={(e) => setNewFlight({...newFlight, title: e.target.value})} />
-                    <DateTimePicker disableClock placeholderText="Start Date" value={newFlight.start} selected={newFlight.start} onChange={(e) =>    setNewFlight({...newFlight, start: e})} />
-                    <DateTimePicker disableClock placeholderText="End Date" value={newFlight.end} selected={newFlight.end} onChange={(e) => setNewFlight({...newFlight, end: e})} />
-                    <h3>Details</h3>
-{/* 
-                    <Form> */}
-                        {['radio'].map((type) => (
-                            <div key={`inline-${type}`} className="mb-3">
+                            <h3>Details</h3>
                             <Form.Check
                                 inline
                                 label="Departing"
                                 name="group1"
-                                type={type}
-                                id={`inline-${type}-1`}
+                                type="radio"
                             />
                             <Form.Check
                                 inline
                                 label="Arriving"
                                 name="group1"
-                                type={type}
-                                id={`inline-${type}-2`}
+                                type="radio"
                             />
-                            </div>
-                        ))}
-                    {/* </Form> */}
+                            <label>
+                                Airline:
+                                <input type="text" name="airline" />
+                            </label>
+                            <label>
+                                Gate:
+                                <input type="number" min="0" name="gate" />
+                            </label>
 
-                    <label>
-                        Airline:
-                        <input type="text" name="airline" />
-                    </label>
-                    <label>
-                        Gate:
-                        <input type="number" min="0" name="gate" />
-                    </label>
-                    </Form>
+                            <h6>Want to add location to map?</h6>
+                            <Form.Check
+                                inline
+                                label="Yes"
+                                name="group1"
+                                type="radio"
+                                onClick={ handleAddFlightLocation }
+                            />
+                            <Form.Check
+                                inline
+                                label="No"
+                                name="group1"
+                                type="radio"
+                                onClick={ handleNoAddFlightLocation }
+                            />
 
-                </Modal.Body>
-                <Modal.Footer>
-                    <button variant="secondary" onClick={handleCloseFlight}>
-                        Close
-                    </button>
-                    <button onClick={ handleSubmitFlight }>Submit</button>
-                </Modal.Footer>
+                            {isAddFlightLocation ?
+                                <div>
+                                    <label>
+                                        Address:
+                                        <input type="test" name="flightAddress" />
+                                    </label>
+                                    <label>
+                                        City:
+                                        <input type="test" name="flightCity" />
+                                    </label>
+                                    <label>
+                                        State:
+                                        <input type="test" name="flightState" />
+                                    </label>
+                                    <label>
+                                        Zipcode:
+                                        <input type="test" name="flightZipcode" />
+                                    </label>
+                                </div>
+                                :
+                                <div></div>
+                            }
+
+                            <h6>Want to add cost?</h6>
+                            <Form.Check
+                                inline
+                                label="Yes"
+                                name="group1"
+                                type="radio"
+                                onClick={ handleAddFlightCost }
+                            />
+                            <Form.Check
+                                inline
+                                label="No"
+                                name="group1"
+                                type="radio"
+                                onClick={ handleNoAddFlightCost }
+                            />
+
+                            {isAddFlightCost ?
+                                <label>
+                                    Cost:
+                                    <input type="number" min="0" name="flightCost" />
+                                </label>
+                                :
+                                <div></div>
+                            }
+
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" onClick={handleCloseFlight}>
+                            Close
+                        </button>
+                        <button onClick={ handleSubmitFlight }>Submit</button>
+                    </Modal.Footer>
+                </Form>
             </Modal>
 
             <button variant="primary" onClick={handleShowHotel}>
                 Add Hotel
             </button>
-            <Modal size="lg" show={showHotel} onHide={handleCloseHotel}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Hotel</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                    <input type="text" placeholder="Add Title" value={newHotel.title} onChange={(e) => setNewHotel({...newHotel, title: e.target.value})} />
-                    <DateTimePicker disableClock placeholderText="Start Date" value={newHotel.start} selected={newHotel.start} onChange={(e) => setNewHotel({...newHotel, start: e})} />
-                    <DateTimePicker disableClock placeholderText="End Date" value={newHotel.end} selected={newHotel.end} onChange={(e) => setNewHotel({...newHotel, end: e})} />
+            <Modal show={showHotel} onHide={handleCloseHotel}>
+                <Form>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Hotel</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input type="text" placeholder="Add Title" value={newHotel.title} onChange={(e) => setNewHotel({...newHotel, title: e.target.value})} />
+                        <DateTimePicker disableClock placeholderText="Start Date" value={newHotel.start} selected={newHotel.start} onChange={(e) => setNewHotel({...newHotel, start: e})} />
+                        <DateTimePicker disableClock placeholderText="End Date" value={newHotel.end} selected={newHotel.end} onChange={(e) => setNewHotel({...newHotel, end: e})} />
 
-
-                    {/* <Form> */}
-                        {['radio'].map((type) => (
-                            <div key={`inline-${type}`} className="mb-3">
-                            <Form.Check
-                                inline
-                                label="Check-in"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-1`}
-                            />
-                            <Form.Check
-                                inline
-                                label="Check-out"
-                                name="group1"
-                                type={type}
-                                id={`inline-${type}-2`}
-                            />
+                        <Form.Check
+                            label="Check-in"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleHotelCheckIn }
+                        />
+                        <Form.Check
+                            // inline
+                            label="Check-out"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleHotelCheckOut }
+                        />
+                        { isHotelCheckOut ?
+                            <div>
+                                <label>
+                                    Hotel Name:
+                                    <input type="text" name="airline" />
+                                </label>
+                                <label>
+                                    Hotel Address:
+                                    <input type="text" name="airline" />
+                                </label>
                             </div>
-                        ))}
-                    {/* </Form> */}
+                            :
+                            <div></div>
+                        }
 
+                        <h6>Want to add location to map?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddHotelLocation }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddHotelLocation }
+                        />
 
-                    <label>
-                        Hotel Name:
-                        <input type="text" name="airline" />
-                    </label>
-                    <label>
-                        Hotel Address:
-                        <input type="text" name="airline" />
-                    </label>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <button variant="secondary" onClick={handleCloseHotel}>
-                        Close
-                    </button>
-                    <button onClick={ handleSubmitHotel }>Submit</button>
-                </Modal.Footer>
+                        {isAddHotelLocation ?
+                            <div>
+                                <label>
+                                    Address:
+                                    <input type="test" name="hotelAddress" />
+                                </label>
+                                <label>
+                                    City:
+                                    <input type="test" name="hotelCity" />
+                                </label>
+                                <label>
+                                    State:
+                                    <input type="test" name="hotelState" />
+                                </label>
+                                <label>
+                                    Zipcode:
+                                    <input type="test" name="hotelZipcode" />
+                                </label>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
+                        <h6>Want to add cost?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddHotelCost }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddHotelCost }
+                        />
+
+                        {isAddHotelCost ?
+                            <label>
+                                Cost:
+                                <input type="number" min="0" name="hotelCost" />
+                            </label>
+                            :
+                            <div></div>
+                        } 
+
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" onClick={handleCloseHotel}>
+                            Close
+                        </button>
+                        <button onClick={ handleSubmitHotel }>Submit</button>
+                    </Modal.Footer>
+                </Form>
             </Modal>
 
 
@@ -289,42 +551,158 @@ function Itinerary()
                 Add Transportation
             </button>
             <Modal show={showTranspo} onHide={handleCloseTranspo}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Transportation</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <input type="text" placeholder="Add Title" value={newTranspo.title} onChange={(e) => setNewTranspo({...newTranspo, title: e.target.value})} />
-                    <DateTimePicker disableClock placeholderText="Start Date" value={newTranspo.start} selected={newTranspo.start} onChange={(e) => setNewTranspo({...newTranspo, start: e})} />
-                    <DateTimePicker disableClock  placeholderText="End Date" value={newTranspo.end} selected={newTranspo.end} onChange={(e) => setNewTranspo({...newTranspo, end: e})} />
-                </Modal.Body>
-                <Modal.Footer>
-                    <button variant="secondary" onClick={handleCloseTranspo}>
-                        Close
-                    </button>
-                    <button onClick={ handleSubmitTranspo }>Submit</button>
-                </Modal.Footer>
+                <Form>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Transportation</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input type="text" placeholder="Add Title" value={newTranspo.title} onChange={(e) => setNewTranspo({...newTranspo, title: e.target.value})} />
+                        <DateTimePicker disableClock placeholderText="Start Date" value={newTranspo.start} selected={newTranspo.start} onChange={(e) => setNewTranspo({...newTranspo, start: e})} />
+                        <DateTimePicker disableClock  placeholderText="End Date" value={newTranspo.end} selected={newTranspo.end} onChange={(e) => setNewTranspo({...newTranspo, end: e})} />
+
+                        <Form.Check
+                            label="Airport Pick-up"
+                            name="group1"
+                            type="radio"
+                        />
+                        <Form.Check
+                            label="Airport Drop-off"
+                            name="group1"
+                            type="radio"
+                        />
+                        <Form.Check
+                            label="Other"
+                            name="group1"
+                            type="radio"
+                        />
+
+                        <h6>Want to add cost?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddTranspoCost }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddTranspoCost }
+                        />
+
+                        {isAddTranspoCost ?
+                            <label>
+                                Cost:
+                                <input type="number" min="0" name="hotelCost" />
+                            </label>
+                            :
+                            <div></div>
+                        } 
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" onClick={handleCloseTranspo}>
+                            Close
+                        </button>
+                        <button onClick={ handleSubmitTranspo }>Submit</button>
+                    </Modal.Footer>
+                </Form>
             </Modal>
-
-
 
             <button variant="primary" onClick={handleShowFood}>
                 Add Restaurant
             </button>
             <Modal show={showFood} onHide={handleCloseFood}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Restaurant</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <input type="text" placeholder="Add Title" value={newFood.title} onChange={(e) => setNewFood({...newFood, title: e.target.value})} />
-                    <DateTimePicker disableClock placeholderText="Start Date" value={newFood.start} selected={newFood.start} onChange={(e) => setNewFood({...newFood, start: e})} />
-                    <DateTimePicker disableClock placeholderText="End Date" value={newFood.end} selected={newFood.end} onChange={(e) => setNewFood({...newFood, end: e})} />
-                </Modal.Body>
-                <Modal.Footer>
-                    <button variant="secondary" onClick={handleCloseFood}>
-                        Close
-                    </button>
-                    <button onClick={ handleSubmitFood }>Submit</button>
-                </Modal.Footer>
+                <Form>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Restaurant</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input type="text" placeholder="Add Title" value={newFood.title} onChange={(e) => setNewFood({...newFood, title: e.target.value})} />
+                        <DateTimePicker disableClock placeholderText="Start Date" value={newFood.start} selected={newFood.start} onChange={(e) => setNewFood({...newFood, start: e})} />
+                        <DateTimePicker disableClock placeholderText="End Date" value={newFood.end} selected={newFood.end} onChange={(e) => setNewFood({...newFood, end: e})} />
+
+                        <label>
+                            Restaurant Name:
+                            <input type="text" name="restaurantName" />
+                        </label>
+                        <label>
+                            Restaurant Location:
+                            <input type="text" name="restaurantLocation" />
+                        </label>
+
+                        <h6>Want to add location to map?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddRestaLocation }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddRestaLocation }
+                        />
+
+                        {isAddRestaLocation ?
+                            <div>
+                                <label>
+                                    Address:
+                                    <input type="test" name="restaAddress" />
+                                </label>
+                                <label>
+                                    City:
+                                    <input type="test" name="restaCity" />
+                                </label>
+                                <label>
+                                    State:
+                                    <input type="test" name="restaState" />
+                                </label>
+                                <label>
+                                    Zipcode:
+                                    <input type="test" name="restaZipcode" />
+                                </label>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
+                        <h6>Want to add cost?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddRestaCost }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddRestaCost }
+                        />
+
+                        {isAddRestaCost ?
+                            <label>
+                                Cost:
+                                <input type="number" min="0" name="restaCost" />
+                            </label>
+                            :
+                            <div></div>
+                        } 
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" onClick={handleCloseFood}>
+                            Close
+                        </button>
+                        <button onClick={ handleSubmitFood }>Submit</button>
+                    </Modal.Footer>
+                </Form>
             </Modal>
 
 
@@ -332,20 +710,91 @@ function Itinerary()
                 Add Activity
             </button>
             <Modal show={showActivity} onHide={handleCloseActivity}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Activity</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <input type="text" placeholder="Add Title" value={newActivity.title} onChange={(e) => setNewActivity({...newActivity, title: e.target.value})} />
-                    <DateTimePicker disableClock placeholderText="Start Date" value={newActivity.start} selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
-                    <DateTimePicker disableClock placeholderText="End Date" value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
-                </Modal.Body>
-                <Modal.Footer>
-                    <button variant="secondary" onClick={handleCloseActivity}>
-                        Close
-                    </button>
-                    <button onClick={ handleSubmitActivity }>Submit</button>
-                </Modal.Footer>
+                <Form>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Activity</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                    <input type="text" placeholder="Add Title" value={newActivity.title} onChange={(e) => setNewActivity({...newActivity, title: e.target.value})} />
+                        <DateTimePicker disableClock placeholderText="Start Date" value={newActivity.start} selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
+                        <DateTimePicker disableClock placeholderText="End Date" value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
+
+                        <label>
+                            Location:
+                            <input type="text" name="activityLocation" />
+                        </label>
+
+                        <h6>Want to add location to map?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddActivityLocation }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddActivityLocation }
+                        />
+
+                        {isAddActivityLocation ?
+                            <div>
+                                <label>
+                                    Address:
+                                    <input type="test" name="activityAddress" />
+                                </label>
+                                <label>
+                                    City:
+                                    <input type="test" name="activityCity" />
+                                </label>
+                                <label>
+                                    State:
+                                    <input type="test" name="activityState" />
+                                </label>
+                                <label>
+                                    Zipcode:
+                                    <input type="test" name="activityZipcode" />
+                                </label>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
+                        <h6>Want to add cost?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddActivityCost }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddActivityCost }
+                        />
+
+                        {isAddActivityCost ?
+                            <label>
+                                Cost:
+                                <input type="number" min="0" name="restaCost" />
+                            </label>
+                            :
+                            <div></div>
+                        } 
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" onClick={handleCloseActivity}>
+                            Close
+                        </button>
+                        <button onClick={ handleSubmitActivity }>Submit</button>
+                    </Modal.Footer>
+                </Form>
             </Modal>
 
 
@@ -353,41 +802,182 @@ function Itinerary()
                 Add Shopping
             </button>
             <Modal show={showShopping} onHide={handleCloseShopping}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Shopping</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <input type="text" placeholder="Add Title" value={newShopping.title} onChange={(e) => setNewShopping({...newShopping, title: e.target.value})} />
-                    <DateTimePicker disableClock placeholderText="Start Date" value={newShopping.start} selected={newShopping.start} onChange={(e) => setNewShopping({...newShopping, start: e})} />
-                    <DateTimePicker disableClock placeholderText="End Date" value={newShopping.end} selected={newShopping.end} onChange={(e) => setNewShopping({...newShopping, end: e})} />
-                </Modal.Body>
-                <Modal.Footer>
-                    <button variant="secondary" onClick={handleCloseShopping}>
-                        Close
-                    </button>
-                    <button onClick={ handleSubmitShopping }>Submit</button>
-                </Modal.Footer>
-            </Modal>
+                <Form>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Shopping</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input type="text" placeholder="Add Title" value={newShopping.title} onChange={(e) => setNewShopping({...newShopping, title: e.target.value})} />
+                        <DateTimePicker disableClock placeholderText="Start Date" value={newShopping.start} selected={newShopping.start} onChange={(e) => setNewShopping({...newShopping, start: e})} />
+                        <DateTimePicker disableClock placeholderText="End Date" value={newShopping.end} selected={newShopping.end} onChange={(e) => setNewShopping({...newShopping, end: e})} />
 
+                        <label>
+                            Location:
+                            <input type="text" name="shoppingLocation" />
+                        </label>
+
+                        <h6>Want to add location to map?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddShoppingLocation }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddShoppingLocation }
+                        />
+
+                        {isAddShoppingLocation ?
+                            <div>
+                                <label>
+                                    Address:
+                                    <input type="test" name="shoppingAddress" />
+                                </label>
+                                <label>
+                                    City:
+                                    <input type="test" name="shoppingCity" />
+                                </label>
+                                <label>
+                                    State:
+                                    <input type="test" name="shoppingState" />
+                                </label>
+                                <label>
+                                    Zipcode:
+                                    <input type="test" name="shoppingZipcode" />
+                                </label>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
+                        <h6>Want to add cost?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddShoppingCost }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddShoppingCost }
+                        />
+
+                        {isAddShoppingCost ?
+                            <label>
+                                Cost:
+                                <input type="number" min="0" name="restaCost" />
+                            </label>
+                            :
+                            <div></div>
+                        } 
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" onClick={handleCloseShopping}>
+                            Close
+                        </button>
+                        <button onClick={ handleSubmitShopping }>Submit</button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
 
             <button variant="primary" onClick={handleShowMisc}>
                 Add Misc
             </button>
             <Modal show={showMisc} onHide={handleCloseMisc}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Misc</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <input type="text" placeholder="Add Title" value={newMisc.title} onChange={(e) => setNewMisc({...newMisc, title: e.target.value})} />
-                    <DateTimePicker disableClock placeholderText="Start Date" value={newMisc.start} selected={newMisc.start} onChange={(e) => setNewMisc({...newMisc, start: e})} />
-                    <DateTimePicker disableClock placeholderText="End Date" value={newMisc.end} selected={newMisc.end} onChange={(e) => setNewMisc({...newMisc, end: e})} />
-                </Modal.Body>
-                <Modal.Footer>
-                    <button variant="secondary" onClick={handleCloseMisc}>
-                        Close
-                    </button>
-                    <button onClick={ handleSubmitMisc }>Submit</button>
-                </Modal.Footer>
+                <Form>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Misc</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input type="text" placeholder="Add Title" value={newMisc.title} onChange={(e) => setNewMisc({...newMisc, title: e.target.value})} />
+                        <DateTimePicker disableClock placeholderText="Start Date" value={newMisc.start} selected={newMisc.start} onChange={(e) => setNewMisc({...newMisc, start: e})} />
+                        <DateTimePicker disableClock placeholderText="End Date" value={newMisc.end} selected={newMisc.end} onChange={(e) => setNewMisc({...newMisc, end: e})} />
+
+                        <label>
+                            Misc:
+                            <input type="text" name="misc" />
+                        </label>
+
+                        <h6>Want to add location to map?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddMiscLocation }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddMiscLocation }
+                        />
+
+                        {isAddMiscLocation ?
+                            <div>
+                                <label>
+                                    Address:
+                                    <input type="test" name="miscAddress" />
+                                </label>
+                                <label>
+                                    City:
+                                    <input type="test" name="miscCity" />
+                                </label>
+                                <label>
+                                    State:
+                                    <input type="test" name="miscState" />
+                                </label>
+                                <label>
+                                    Zipcode:
+                                    <input type="test" name="miscZipcode" />
+                                </label>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
+                        <h6>Want to add cost?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddMiscCost }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddMiscCost }
+                        />
+
+                        {isAddMiscCost ?
+                            <label>
+                                Cost:
+                                <input type="number" min="0" name="restaCost" />
+                            </label>
+                            :
+                            <div></div>
+                        } 
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" onClick={handleCloseMisc}>
+                            Close
+                        </button>
+                        <button onClick={ handleSubmitMisc }>Submit</button>
+                    </Modal.Footer>
+                </Form>
             </Modal> 
 
             <Calendar

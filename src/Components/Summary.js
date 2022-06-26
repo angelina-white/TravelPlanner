@@ -53,9 +53,11 @@ function Summary()
                     <Accordion.Header>Food</Accordion.Header>
                     <Accordion.Body>
                         <h5>Restaurant1</h5>
+                        <p>Reservation Location:</p>
                         <p>Reservation Day:</p>
                         <p>Reservation Time:</p>
                         <h5>Restaurant2</h5>
+                        <p>Reservation Location:</p>
                         <p>Reservation Day:</p>
                         <p>Reservation Time:</p>
                         <h5>Cost</h5>
@@ -66,9 +68,11 @@ function Summary()
                     <Accordion.Header>Activities</Accordion.Header>
                     <Accordion.Body>
                         <h5>Activity1</h5>
+                        <p>Location:</p>
                         <p>Day:</p>
                         <p>Time:</p>
                         <h5>Acitivty2</h5>
+                        <p>Location:</p>
                         <p>Day:</p>
                         <p>Time:</p>
                         <h5>Cost</h5>
