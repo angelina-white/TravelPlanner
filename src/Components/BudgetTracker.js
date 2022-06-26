@@ -71,7 +71,7 @@ function BudgetTracker()
                 </tbody>
             </Table>
 
-            //there is a pie chart you can add both in one, add that
+            {/* there is a pie chart you can add both in one, add that */}
             
         </div>
     )
