@@ -114,18 +114,18 @@ function Itinerary()
         setAllEvents([...allEvents, newTranspo])
     }
 
-    //add food
-    const [newFood, setNewFood] = useState({ title: "", start: "", end: "", isFood: true})
-    function handleSubmitFood()
-    {
-        setAllEvents([...allEvents, newFood])
-    }
-
     //add activity
     const [newActivity, setNewActivity] = useState({ title: "", start: "", end: "", isActivity: true})
     function handleSubmitActivity()
     {
         setAllEvents([...allEvents, newActivity])
+    }
+
+    //add food
+    const [newFood, setNewFood] = useState({ title: "", start: "", end: "", isFood: true})
+    function handleSubmitFood()
+    {
+        setAllEvents([...allEvents, newFood])
     }
 
     //add shopping
@@ -156,13 +156,13 @@ function Itinerary()
     const handleCloseTranspo = () => setShowTranspo(false);
     const handleShowTranspo = () => setShowTranspo(true);
 
-    const [showFood, setShowFood] = useState(false);
-    const handleCloseFood = () => setShowFood(false);
-    const handleShowFood = () => setShowFood(true);
-
     const [showActivity, setShowActivity] = useState(false);
     const handleCloseActivity = () => setShowActivity(false);
     const handleShowActivity = () => setShowActivity(true);
+
+    const [showFood, setShowFood] = useState(false);
+    const handleCloseFood = () => setShowFood(false);
+    const handleShowFood = () => setShowFood(true);
 
     const [showShopping, setShowShopping] = useState(false);
     const handleCloseShopping = () => setShowShopping(false);
@@ -171,19 +171,6 @@ function Itinerary()
     const [showMisc, setShowMisc] = useState(false);
     const handleCloseMisc = () => setShowMisc(false);
     const handleShowMisc = () => setShowMisc(true);
-
-
-    //hotel check in
-    const [isHotelCheckOut, setHotelCheckOut] = useState(false)
-    function handleHotelCheckOut()
-    {
-        setHotelCheckOut((isHotelCheckOut) => isHotelCheckOut = false)
-    }
-
-    function handleHotelCheckIn()
-    {
-        setHotelCheckOut((isHotelCheckOut) => isHotelCheckOut = true)
-    }
 
 
     //add costs
@@ -217,16 +204,6 @@ function Itinerary()
         setIsAddTranspoCost((isAddTranspoCost) => isAddTranspoCost = false)
     }
 
-    const [isAddRestaCost, setIsAddRestaCost] = useState(false)
-    function handleAddRestaCost()
-    {
-        setIsAddRestaCost((isAddRestaCost) => isAddRestaCost = true)
-    }
-    function handleNoAddRestaCost()
-    {
-        setIsAddRestaCost((isAddRestaCost) => isAddRestaCost = false)
-    }
-
     const [isAddActivityCost, setIsAddActivityCost] = useState(false)
     function handleAddActivityCost()
     {
@@ -235,6 +212,16 @@ function Itinerary()
     function handleNoAddActivityCost()
     {
         setIsAddActivityCost((isAddActivityCost) => isAddActivityCost = false)
+    }
+
+    const [isAddRestaCost, setIsAddRestaCost] = useState(false)
+    function handleAddRestaCost()
+    {
+        setIsAddRestaCost((isAddRestaCost) => isAddRestaCost = true)
+    }
+    function handleNoAddRestaCost()
+    {
+        setIsAddRestaCost((isAddRestaCost) => isAddRestaCost = false)
     }
 
     const [isAddShoppingCost, setIsAddShoppingCost] = useState(false)
@@ -278,16 +265,6 @@ function Itinerary()
         setIsAddHotelLocation((isAddHotelLocation) => isAddHotelLocation = false)
     }
 
-    const [isAddRestaLocation, setIsAddRestaLocation] = useState(false)
-    function handleAddRestaLocation()
-    {
-        setIsAddRestaLocation((isAddRestaLocation) => isAddRestaLocation = true)
-    }
-    function handleNoAddRestaLocation()
-    {
-        setIsAddRestaLocation((isAddRestaLocation) => isAddRestaLocation = false)
-    }
-
     const [isAddActivityLocation, setIsAddActivityLocation] = useState(false)
     function handleAddActivityLocation()
     {
@@ -296,6 +273,16 @@ function Itinerary()
     function handleNoAddActivityLocation()
     {
         setIsAddActivityLocation((isAddActivityLocation) => isAddActivityLocation = false)
+    }
+
+    const [isAddRestaLocation, setIsAddRestaLocation] = useState(false)
+    function handleAddRestaLocation()
+    {
+        setIsAddRestaLocation((isAddRestaLocation) => isAddRestaLocation = true)
+    }
+    function handleNoAddRestaLocation()
+    {
+        setIsAddRestaLocation((isAddRestaLocation) => isAddRestaLocation = false)
     }
 
     const [isAddShoppingLocation, setIsAddShoppingLocation] = useState(false)
@@ -448,29 +435,18 @@ function Itinerary()
                             label="Check-in"
                             name="group1"
                             type="radio"
-                            onClick={ handleHotelCheckIn }
                         />
                         <Form.Check
                             // inline
                             label="Check-out"
                             name="group1"
                             type="radio"
-                            onClick={ handleHotelCheckOut }
                         />
-                        { isHotelCheckOut ?
-                            <div>
-                                <label>
-                                    Hotel Name:
-                                    <input type="text" name="airline" />
-                                </label>
-                                <label>
-                                    Hotel Address:
-                                    <input type="text" name="airline" />
-                                </label>
-                            </div>
-                            :
-                            <div></div>
-                        }
+
+                        <label>
+                            Hotel Name:
+                            <input type="text" name="airline" />
+                        </label>
 
                         <h6>Want to add location to map?</h6>
                         <Form.Check
@@ -610,6 +586,99 @@ function Itinerary()
                 </Form>
             </Modal>
 
+
+            <button variant="primary" onClick={handleShowActivity}>
+                Add Activity
+            </button>
+            <Modal show={showActivity} onHide={handleCloseActivity}>
+                <Form>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Activity</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                    <input type="text" placeholder="Add Title" value={newActivity.title} onChange={(e) => setNewActivity({...newActivity, title: e.target.value})} />
+                        <DateTimePicker disableClock value={newActivity.start} selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
+                        <DateTimePicker disableClock value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
+
+                        <label>
+                            Location:
+                            <input type="text" name="activityLocation" />
+                        </label>
+
+                        <h6>Want to add location to map?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddActivityLocation }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddActivityLocation }
+                        />
+
+                        {isAddActivityLocation ?
+                            <div>
+                                <label>
+                                    Address:
+                                    <input type="test" name="activityAddress" />
+                                </label>
+                                <label>
+                                    City:
+                                    <input type="test" name="activityCity" />
+                                </label>
+                                <label>
+                                    State:
+                                    <input type="test" name="activityState" />
+                                </label>
+                                <label>
+                                    Zipcode:
+                                    <input type="test" name="activityZipcode" />
+                                </label>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
+                        <h6>Want to add cost?</h6>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleAddActivityCost }
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="group1"
+                            type="radio"
+                            onClick={ handleNoAddActivityCost }
+                        />
+
+                        {isAddActivityCost ?
+                            <label>
+                                Cost:
+                                <input type="number" min="0" name="restaCost" />
+                            </label>
+                            :
+                            <div></div>
+                        } 
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" onClick={handleCloseActivity}>
+                            Close
+                        </button>
+                        <button onClick={ handleSubmitActivity }>Submit</button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
+
+
             <button variant="primary" onClick={handleShowFood}>
                 Add Restaurant
             </button>
@@ -701,98 +770,6 @@ function Itinerary()
                             Close
                         </button>
                         <button onClick={ handleSubmitFood }>Submit</button>
-                    </Modal.Footer>
-                </Form>
-            </Modal>
-
-
-            <button variant="primary" onClick={handleShowActivity}>
-                Add Activity
-            </button>
-            <Modal show={showActivity} onHide={handleCloseActivity}>
-                <Form>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add Activity</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                    <input type="text" placeholder="Add Title" value={newActivity.title} onChange={(e) => setNewActivity({...newActivity, title: e.target.value})} />
-                        <DateTimePicker disableClock value={newActivity.start} selected={newActivity.start} onChange={(e) => setNewActivity({...newActivity, start: e})} />
-                        <DateTimePicker disableClock value={newActivity.end} selected={newActivity.end} onChange={(e) => setNewActivity({...newActivity, end: e})} />
-
-                        <label>
-                            Location:
-                            <input type="text" name="activityLocation" />
-                        </label>
-
-                        <h6>Want to add location to map?</h6>
-                        <Form.Check
-                            inline
-                            label="Yes"
-                            name="group1"
-                            type="radio"
-                            onClick={ handleAddActivityLocation }
-                        />
-                        <Form.Check
-                            inline
-                            label="No"
-                            name="group1"
-                            type="radio"
-                            onClick={ handleNoAddActivityLocation }
-                        />
-
-                        {isAddActivityLocation ?
-                            <div>
-                                <label>
-                                    Address:
-                                    <input type="test" name="activityAddress" />
-                                </label>
-                                <label>
-                                    City:
-                                    <input type="test" name="activityCity" />
-                                </label>
-                                <label>
-                                    State:
-                                    <input type="test" name="activityState" />
-                                </label>
-                                <label>
-                                    Zipcode:
-                                    <input type="test" name="activityZipcode" />
-                                </label>
-                            </div>
-                            :
-                            <div></div>
-                        }
-
-                        <h6>Want to add cost?</h6>
-                        <Form.Check
-                            inline
-                            label="Yes"
-                            name="group1"
-                            type="radio"
-                            onClick={ handleAddActivityCost }
-                        />
-                        <Form.Check
-                            inline
-                            label="No"
-                            name="group1"
-                            type="radio"
-                            onClick={ handleNoAddActivityCost }
-                        />
-
-                        {isAddActivityCost ?
-                            <label>
-                                Cost:
-                                <input type="number" min="0" name="restaCost" />
-                            </label>
-                            :
-                            <div></div>
-                        } 
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <button variant="secondary" onClick={handleCloseActivity}>
-                            Close
-                        </button>
-                        <button onClick={ handleSubmitActivity }>Submit</button>
                     </Modal.Footer>
                 </Form>
             </Modal>

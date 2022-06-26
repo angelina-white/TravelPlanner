@@ -10,8 +10,8 @@ function Budget()
             flight: "0",
             hotel: "0",
             transportation:"0",
-            food: "0",
             activities: "0",
+            food: "0",
             shopping: "0",
             misc: "0"
         }
@@ -78,11 +78,11 @@ function Budget()
                                 </td>
                             </tr>
                             <tr>
-                                <td>Food</td>
+                                <td>Activities</td>
                                 <td>
                                     <CurrencyInput
                                         id="input-example"
-                                        name="food"
+                                        name="activities"
                                         placeholder="Please enter a number"
                                         defaultValue= "0.00"
                                         decimalsLimit={2}
@@ -91,11 +91,11 @@ function Budget()
                                 </td>
                             </tr>
                             <tr>
-                                <td>Activities</td>
+                                <td>Food</td>
                                 <td>
                                     <CurrencyInput
                                         id="input-example"
-                                        name="activities"
+                                        name="food"
                                         placeholder="Please enter a number"
                                         defaultValue= "0.00"
                                         decimalsLimit={2}

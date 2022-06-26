@@ -3,14 +3,14 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 function BudgetChart({ travelBudget })
 {
-    const {flight, hotel, transportation, food, activities, shopping, misc} = travelBudget
+    const {flight, hotel, transportation, activities, food, shopping, misc} = travelBudget
 
     const data = [
     { name: 'Flight', value: parseInt(flight) },
     { name: 'Hotel', value: parseInt(hotel) },
     { name: 'Transportation', value: parseInt(transportation) },
-    { name: 'Food', value: parseInt(food) },
     { name: 'Activities', value: parseInt(activities) },
+    { name: 'Food', value: parseInt(food) },
     { name: 'Shopping', value: parseInt(shopping) },
     { name: 'Misc', value: parseInt(misc) }
     ];
@@ -51,12 +51,12 @@ function BudgetChart({ travelBudget })
                     Transportation
                 </ListGroup.Item>
                 <ListGroup.Item>
-                    <div className="budgetChartBox" id="foodBox"></div>
-                    Food
-                </ListGroup.Item>
-                <ListGroup.Item>
                     <div className="budgetChartBox" id="activitiesBox"></div>
                     Activities
+                </ListGroup.Item>
+                <ListGroup.Item>
+                    <div className="budgetChartBox" id="foodBox"></div>
+                    Food
                 </ListGroup.Item>
                 <ListGroup.Item>
                     <div className="budgetChartBox" id="shoppingBox"></div>
